@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园兼职防骗小助手</title>
+    <!-- 基础样式（可选，优化页面观感） -->
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+        }
+        .page-title {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 30px;
+        }
+        .tips {
+            text-align: center;
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面标题与提示 -->
+    <h1 class="page-title">校园兼职防骗小助手</h1>
+    <p class="tips">有任何兼职防骗问题，可直接在右侧聊天窗口提问哦！</p>
+
+    <!-- Coze Bot 嵌入脚本 -->
+    <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"></script>
+    <script>
+        // 初始化校园兼职防骗Bot
+        new CozeWebSDK.WebChatClient({
+            // 核心配置
+            config: {
+                bot_id: '7585009508964401193', // 替换为你的Bot真实ID
+                locale: 'zh-CN' // 固定为中文
+            },
+            // 聊天窗口样式/文案配置（贴合校园场景）
+            componentProps: {
+                title: '校园兼职防骗小助手', // 替换默认标题
+                placeholder: '比如：刷单返利靠谱吗？兼职要交押金正常吗？', // 输入框提示语
+                theme: 'light', // 浅色主题（适配校园网页）
+                width: 380, // 聊天窗口宽度（px）
+                height: 600, // 聊天窗口高度（px）
+                showAvatar: true, // 显示Bot头像
+                showCloseBtn: true // 显示关闭按钮
+            },
+            // 授权配置
+            auth: {
+                type: 'token',
+                token: 'pat_NoPHSUBCztQJ4gttK5jGgklXIEDdeJexLRIwFamE5kzqJJ6fgELsa6wZZCP1771N', // 替换为你的真实pat令牌
+                // 令牌过期刷新逻辑（测试阶段返回原令牌，正式环境需对接后端）
+                onRefreshToken: function () {
+                    return 'pat_NoPHSUBCztQJ4gttK5jGgklXIEDdeJexLRIwFamE5kzqJJ6fgELsa6wZZCP1771N'; // 替换为你的真实pat令牌
+                }
+            },
+            // 可选：初始化成功/失败回调（便于调试）
+            onSuccess: function () {
+                console.log('防骗Bot初始化成功！');
+            },
+            onError: function (error) {
+                console.error('Bot初始化失败：', error);
+                alert('防骗助手加载失败，请刷新页面重试！');
+            }
+        });
+    </script>
+</body>
+</html>
