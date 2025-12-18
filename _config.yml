@@ -1,0 +1,9 @@
+# 配置默认首页
+permalink: /:title.html
+defaults:
+  - scope:
+      path: "" # 根目录
+    values:
+      layout: "default"
+# 指定首页文件
+index: campus_anti_fraud_bot.html
